@@ -11,6 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuctionsRouteImport } from './routes/auctions'
+import { Route as CharityDonationsRouteImport } from './routes/charity-donations'
+import { Route as CommunityDonationsRouteImport } from './routes/community-donations'
+import { Route as DonateAnItemRouteImport } from './routes/donate-an-item'
+import { Route as RequestHelpRouteImport } from './routes/request-help'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as FindsIndexRouteImport } from './routes/finds.index'
 import { Route as FindsSlugRouteImport } from './routes/finds.$slug'
 import { Route as VideosIndexRouteImport } from './routes/videos.index'
@@ -24,6 +30,36 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuctionsRoute = AuctionsRouteImport.update({
+  id: '/auctions',
+  path: '/auctions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharityDonationsRoute = CharityDonationsRouteImport.update({
+  id: '/charity-donations',
+  path: '/charity-donations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityDonationsRoute = CommunityDonationsRouteImport.update({
+  id: '/community-donations',
+  path: '/community-donations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateAnItemRoute = DonateAnItemRouteImport.update({
+  id: '/donate-an-item',
+  path: '/donate-an-item',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestHelpRoute = RequestHelpRouteImport.update({
+  id: '/request-help',
+  path: '/request-help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FindsIndexRoute = FindsIndexRouteImport.update({
@@ -50,6 +86,12 @@ const VideosVideoIdRoute = VideosVideoIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auctions': typeof AuctionsRoute
+  '/charity-donations': typeof CharityDonationsRoute
+  '/community-donations': typeof CommunityDonationsRoute
+  '/donate-an-item': typeof DonateAnItemRoute
+  '/request-help': typeof RequestHelpRoute
+  '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds/': typeof FindsIndexRoute
@@ -58,6 +100,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auctions': typeof AuctionsRoute
+  '/charity-donations': typeof CharityDonationsRoute
+  '/community-donations': typeof CommunityDonationsRoute
+  '/donate-an-item': typeof DonateAnItemRoute
+  '/request-help': typeof RequestHelpRoute
+  '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds': typeof FindsIndexRoute
@@ -67,6 +115,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auctions': typeof AuctionsRoute
+  '/charity-donations': typeof CharityDonationsRoute
+  '/community-donations': typeof CommunityDonationsRoute
+  '/donate-an-item': typeof DonateAnItemRoute
+  '/request-help': typeof RequestHelpRoute
+  '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds/': typeof FindsIndexRoute
@@ -77,17 +131,40 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auctions'
+    | '/charity-donations'
+    | '/community-donations'
+    | '/donate-an-item'
+    | '/request-help'
+    | '/shop'
     | '/finds/$slug'
     | '/videos/$videoId'
     | '/finds/'
     | '/videos/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/finds/$slug' | '/videos/$videoId' | '/finds' | '/videos'
+    | '/'
+    | '/about'
+    | '/auctions'
+    | '/charity-donations'
+    | '/community-donations'
+    | '/donate-an-item'
+    | '/request-help'
+    | '/shop'
+    | '/finds/$slug'
+    | '/videos/$videoId'
+    | '/finds'
+    | '/videos'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/auctions'
+    | '/charity-donations'
+    | '/community-donations'
+    | '/donate-an-item'
+    | '/request-help'
+    | '/shop'
     | '/finds/$slug'
     | '/videos/$videoId'
     | '/finds/'
@@ -97,6 +174,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AuctionsRoute: typeof AuctionsRoute
+  CharityDonationsRoute: typeof CharityDonationsRoute
+  CommunityDonationsRoute: typeof CommunityDonationsRoute
+  DonateAnItemRoute: typeof DonateAnItemRoute
+  RequestHelpRoute: typeof RequestHelpRoute
+  ShopRoute: typeof ShopRoute
   FindsSlugRoute: typeof FindsSlugRoute
   VideosVideoIdRoute: typeof VideosVideoIdRoute
   FindsIndexRoute: typeof FindsIndexRoute
@@ -117,6 +200,48 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auctions': {
+      id: '/auctions'
+      path: '/auctions'
+      fullPath: '/auctions'
+      preLoaderRoute: typeof AuctionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charity-donations': {
+      id: '/charity-donations'
+      path: '/charity-donations'
+      fullPath: '/charity-donations'
+      preLoaderRoute: typeof CharityDonationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community-donations': {
+      id: '/community-donations'
+      path: '/community-donations'
+      fullPath: '/community-donations'
+      preLoaderRoute: typeof CommunityDonationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate-an-item': {
+      id: '/donate-an-item'
+      path: '/donate-an-item'
+      fullPath: '/donate-an-item'
+      preLoaderRoute: typeof DonateAnItemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-help': {
+      id: '/request-help'
+      path: '/request-help'
+      fullPath: '/request-help'
+      preLoaderRoute: typeof RequestHelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finds/': {
@@ -153,6 +278,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AuctionsRoute: AuctionsRoute,
+  CharityDonationsRoute: CharityDonationsRoute,
+  CommunityDonationsRoute: CommunityDonationsRoute,
+  DonateAnItemRoute: DonateAnItemRoute,
+  RequestHelpRoute: RequestHelpRoute,
+  ShopRoute: ShopRoute,
   FindsSlugRoute: FindsSlugRoute,
   VideosVideoIdRoute: VideosVideoIdRoute,
   FindsIndexRoute: FindsIndexRoute,
