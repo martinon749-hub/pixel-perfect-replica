@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuctionsRouteImport } from './routes/auctions'
+import { Route as CharityCommunityRouteImport } from './routes/charity-community'
 import { Route as CharityDonationsRouteImport } from './routes/charity-donations'
 import { Route as CommunityDonationsRouteImport } from './routes/community-donations'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateAnItemRouteImport } from './routes/donate-an-item'
 import { Route as RequestHelpRouteImport } from './routes/request-help'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -37,6 +39,11 @@ const AuctionsRoute = AuctionsRouteImport.update({
   path: '/auctions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CharityCommunityRoute = CharityCommunityRouteImport.update({
+  id: '/charity-community',
+  path: '/charity-community',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CharityDonationsRoute = CharityDonationsRouteImport.update({
   id: '/charity-donations',
   path: '/charity-donations',
@@ -45,6 +52,11 @@ const CharityDonationsRoute = CharityDonationsRouteImport.update({
 const CommunityDonationsRoute = CommunityDonationsRouteImport.update({
   id: '/community-donations',
   path: '/community-donations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonateAnItemRoute = DonateAnItemRouteImport.update({
@@ -87,8 +99,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auctions': typeof AuctionsRoute
+  '/charity-community': typeof CharityCommunityRoute
   '/charity-donations': typeof CharityDonationsRoute
   '/community-donations': typeof CommunityDonationsRoute
+  '/contact': typeof ContactRoute
   '/donate-an-item': typeof DonateAnItemRoute
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
@@ -101,8 +115,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auctions': typeof AuctionsRoute
+  '/charity-community': typeof CharityCommunityRoute
   '/charity-donations': typeof CharityDonationsRoute
   '/community-donations': typeof CommunityDonationsRoute
+  '/contact': typeof ContactRoute
   '/donate-an-item': typeof DonateAnItemRoute
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
@@ -116,8 +132,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auctions': typeof AuctionsRoute
+  '/charity-community': typeof CharityCommunityRoute
   '/charity-donations': typeof CharityDonationsRoute
   '/community-donations': typeof CommunityDonationsRoute
+  '/contact': typeof ContactRoute
   '/donate-an-item': typeof DonateAnItemRoute
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
@@ -132,8 +150,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auctions'
+    | '/charity-community'
     | '/charity-donations'
     | '/community-donations'
+    | '/contact'
     | '/donate-an-item'
     | '/request-help'
     | '/shop'
@@ -146,8 +166,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auctions'
+    | '/charity-community'
     | '/charity-donations'
     | '/community-donations'
+    | '/contact'
     | '/donate-an-item'
     | '/request-help'
     | '/shop'
@@ -160,8 +182,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auctions'
+    | '/charity-community'
     | '/charity-donations'
     | '/community-donations'
+    | '/contact'
     | '/donate-an-item'
     | '/request-help'
     | '/shop'
@@ -175,8 +199,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AuctionsRoute: typeof AuctionsRoute
+  CharityCommunityRoute: typeof CharityCommunityRoute
   CharityDonationsRoute: typeof CharityDonationsRoute
   CommunityDonationsRoute: typeof CommunityDonationsRoute
+  ContactRoute: typeof ContactRoute
   DonateAnItemRoute: typeof DonateAnItemRoute
   RequestHelpRoute: typeof RequestHelpRoute
   ShopRoute: typeof ShopRoute
@@ -209,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuctionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/charity-community': {
+      id: '/charity-community'
+      path: '/charity-community'
+      fullPath: '/charity-community'
+      preLoaderRoute: typeof CharityCommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/charity-donations': {
       id: '/charity-donations'
       path: '/charity-donations'
@@ -221,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/community-donations'
       fullPath: '/community-donations'
       preLoaderRoute: typeof CommunityDonationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donate-an-item': {
@@ -279,8 +319,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AuctionsRoute: AuctionsRoute,
+  CharityCommunityRoute: CharityCommunityRoute,
   CharityDonationsRoute: CharityDonationsRoute,
   CommunityDonationsRoute: CommunityDonationsRoute,
+  ContactRoute: ContactRoute,
   DonateAnItemRoute: DonateAnItemRoute,
   RequestHelpRoute: RequestHelpRoute,
   ShopRoute: ShopRoute,
