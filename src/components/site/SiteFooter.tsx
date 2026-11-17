@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Youtube } from "lucide-react";
-import { communityNav, legalNav, mainNav, SITE_NAME, YOUTUBE_URL } from "@/lib/site";
+import { communityNav, legalPages, mainNav, SITE_NAME, YOUTUBE_URL, type NavItem } from "@/lib/site";
 import { logoUrl } from "./Logo";
 import { NewsletterForm } from "./NewsletterForm";
 
@@ -21,7 +21,22 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7">
           <FooterCol title="Explore" items={[...mainNav, { label: "Contact", to: "/contact" }]} />
           <FooterCol title="Community" items={communityNav} />
-          <FooterCol title="Policies" items={legalNav} />
+          <div>
+            <p className="eyebrow mb-4 text-gold">Policies</p>
+            <ul className="space-y-2.5">
+              {legalPages.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to="/legal/$slug"
+                    params={{ slug: p.slug }}
+                    className="text-sm text-forest-foreground/75 transition-colors hover:text-cream"
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div className="border-t border-forest-foreground/10">
@@ -41,7 +56,7 @@ export function SiteFooter() {
   );
 }
 
-function FooterCol({ title, items }: { title: string; items: { label: string; to: string }[] }) {
+function FooterCol({ title, items }: { title: string; items: NavItem[] }) {
   return (
     <div>
       <p className="eyebrow mb-4 text-gold">{title}</p>

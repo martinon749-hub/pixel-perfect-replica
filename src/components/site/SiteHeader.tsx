@@ -67,7 +67,7 @@ export function SiteHeader() {
                 <Logo imgClassName="h-10" />
               </SheetHeader>
               <nav aria-label="Mobile" className="mt-2 flex flex-col px-4 pb-8">
-                {[...mainNav, { label: "Contact", to: "/contact" }].map((item) => (
+                {[...mainNav, { label: "Contact", to: "/contact" as const }].map((item) => (
                   <Link
                     key={item.to}
                     to={item.to}

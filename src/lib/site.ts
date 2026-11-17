@@ -1,8 +1,11 @@
+import type { LinkProps } from "@tanstack/react-router";
+
 export const SITE_NAME = "Couple of Dumpsters";
 export const YOUTUBE_URL = "https://www.youtube.com/@CoupleofDumpsters";
 export const YOUTUBE_SUBSCRIBE_URL = "https://www.youtube.com/@CoupleofDumpsters?sub_confirmation=1";
 
-export type NavItem = { label: string; to: string; description?: string };
+export type AppPath = NonNullable<LinkProps["to"]>;
+export type NavItem = { label: string; to: AppPath; description?: string };
 
 export const mainNav: NavItem[] = [
   { label: "Home", to: "/" },
@@ -21,16 +24,16 @@ export const communityNav: NavItem[] = [
   { label: "Charity Donations", to: "/charity-donations", description: "For registered charities" },
 ];
 
-export const legalNav: NavItem[] = [
-  { label: "Privacy Policy", to: "/legal/privacy" },
-  { label: "Cookie Policy", to: "/legal/cookies" },
-  { label: "Terms & Conditions", to: "/legal/terms" },
-  { label: "Returns & Refunds", to: "/legal/returns" },
-  { label: "Shipping Policy", to: "/legal/shipping" },
-  { label: "Auction Terms", to: "/legal/auction-terms" },
-  { label: "Charity Donation Terms", to: "/legal/charity-donation-terms" },
-  { label: "Community Donation Terms", to: "/legal/community-donation-terms" },
-];
+export const legalPages = [
+  { label: "Privacy Policy", slug: "privacy" },
+  { label: "Cookie Policy", slug: "cookies" },
+  { label: "Terms & Conditions", slug: "terms" },
+  { label: "Returns & Refunds", slug: "returns" },
+  { label: "Shipping Policy", slug: "shipping" },
+  { label: "Auction Terms", slug: "auction-terms" },
+  { label: "Charity Donation Terms", slug: "charity-donation-terms" },
+  { label: "Community Donation Terms", slug: "community-donation-terms" },
+] as const;
 
 export const youtubeThumb = (id: string, quality: "maxresdefault" | "hqdefault" | "mqdefault" = "maxresdefault") =>
   `https://i.ytimg.com/vi/${id}/${quality}.jpg`;

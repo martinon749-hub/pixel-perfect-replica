@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, Gavel, HandHeart, Gift, Package, ShoppingBag, Youtube, Search } from "lucide-react";
@@ -10,7 +11,7 @@ import { SectionHeading } from "@/components/site/sections";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
 import { logoUrl } from "@/components/site/Logo";
 import { discoveriesQuery, videosQuery } from "@/lib/content.queries";
-import { YOUTUBE_SUBSCRIBE_URL, YOUTUBE_URL } from "@/lib/site";
+import { YOUTUBE_SUBSCRIBE_URL, YOUTUBE_URL, type AppPath } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -256,7 +257,7 @@ function Home() {
   );
 }
 
-function TeaserCard({ icon, title, text, to }: { icon: React.ReactNode; title: string; text: string; to: string }) {
+function TeaserCard({ icon, title, text, to }: { icon: ReactNode; title: string; text: string; to: AppPath }) {
   return (
     <Link
       to={to}
@@ -274,7 +275,7 @@ function TeaserCard({ icon, title, text, to }: { icon: React.ReactNode; title: s
   );
 }
 
-function PathLink({ to, icon, label }: { to: string; icon: React.ReactNode; label: string }) {
+function PathLink({ to, icon, label }: { to: AppPath; icon: ReactNode; label: string }) {
   return (
     <Link
       to={to}
