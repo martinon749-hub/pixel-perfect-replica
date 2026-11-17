@@ -21,6 +21,7 @@ import { Route as RequestHelpRouteImport } from './routes/request-help'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as FindsIndexRouteImport } from './routes/finds.index'
 import { Route as FindsSlugRouteImport } from './routes/finds.$slug'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as VideosIndexRouteImport } from './routes/videos.index'
 import { Route as VideosVideoIdRouteImport } from './routes/videos.$videoId'
 
@@ -84,6 +85,11 @@ const FindsSlugRoute = FindsSlugRouteImport.update({
   path: '/finds/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VideosIndexRoute = VideosIndexRouteImport.update({
   id: '/videos/',
   path: '/videos/',
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds/': typeof FindsIndexRoute
   '/videos/': typeof VideosIndexRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds': typeof FindsIndexRoute
   '/videos': typeof VideosIndexRoute
@@ -140,6 +148,7 @@ export interface FileRoutesById {
   '/request-help': typeof RequestHelpRoute
   '/shop': typeof ShopRoute
   '/finds/$slug': typeof FindsSlugRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/videos/$videoId': typeof VideosVideoIdRoute
   '/finds/': typeof FindsIndexRoute
   '/videos/': typeof VideosIndexRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
     | '/request-help'
     | '/shop'
     | '/finds/$slug'
+    | '/legal/$slug'
     | '/videos/$videoId'
     | '/finds/'
     | '/videos/'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
     | '/request-help'
     | '/shop'
     | '/finds/$slug'
+    | '/legal/$slug'
     | '/videos/$videoId'
     | '/finds'
     | '/videos'
@@ -190,6 +201,7 @@ export interface FileRouteTypes {
     | '/request-help'
     | '/shop'
     | '/finds/$slug'
+    | '/legal/$slug'
     | '/videos/$videoId'
     | '/finds/'
     | '/videos/'
@@ -207,6 +219,7 @@ export interface RootRouteChildren {
   RequestHelpRoute: typeof RequestHelpRoute
   ShopRoute: typeof ShopRoute
   FindsSlugRoute: typeof FindsSlugRoute
+  LegalSlugRoute: typeof LegalSlugRoute
   VideosVideoIdRoute: typeof VideosVideoIdRoute
   FindsIndexRoute: typeof FindsIndexRoute
   VideosIndexRoute: typeof VideosIndexRoute
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FindsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/videos/': {
       id: '/videos/'
       path: '/videos'
@@ -327,6 +347,7 @@ const rootRouteChildren: RootRouteChildren = {
   RequestHelpRoute: RequestHelpRoute,
   ShopRoute: ShopRoute,
   FindsSlugRoute: FindsSlugRoute,
+  LegalSlugRoute: LegalSlugRoute,
   VideosVideoIdRoute: VideosVideoIdRoute,
   FindsIndexRoute: FindsIndexRoute,
   VideosIndexRoute: VideosIndexRoute,
